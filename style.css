@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&display=swap');
 
 *{
     padding: 0;
@@ -5,13 +6,36 @@
     box-sizing: border-box;
 }
 
-body{
-    
-    width: 100%;
-}
 
-.conatiner{
+
+.container{
+    background-color: wheat;
+    font-family: 'Comfortaa', cursive;
     display: flex;
     flex-direction: column;
-    width: 50%;
+   text-align: center;
+   width: 70%;
+   min-height: 50%;
+   margin-left: 15rem;
+   
+   
+}
+
+input{
+    margin: 1rem auto;
+    border: 2px solid slategray;
+    padding: 0.8rem;
+    border-radius: 15px;
+}
+
+button{
+    margin: 0.5rem auto;
+    padding: 0.3rem;
+    border: 3px solid slategray;
+    border-radius: 7px;
+
+}
+p{
+    margin: 0.5rem auto;
+    b
 }

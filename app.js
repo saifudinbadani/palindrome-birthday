@@ -154,10 +154,10 @@ function clickHandler(){
         }
             var isPalindrome = isPalindromeForAllFormats(date);
             if (isPalindrome){
-                outputResult.innerText = 'Yay! your birthdate is a palindrome.🎊'
+                outputResult.innerText = 'Yay! 😄 your birthdate is a palindrome.🎊'
             }else{
                 var [counter, nextDate] = nextPalindromeDate(date);
-                outputResult.innerText = `Oops, your birthdate is not a palindrome. Next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}, missed it by ${counter} days`
+                outputResult.innerText = `Oops, your birthdate is not a palindrome ☹️,  Next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}, missed it by ${counter} days`
             }
         }
     }
