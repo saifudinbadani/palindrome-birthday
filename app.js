@@ -13,11 +13,8 @@ function reverseString(str){
 
 
 function isPalindrome(str){
-    if(str === reverseString(str)){
-        return true;
-    } else{
-        return false;
-    }
+    var reverse = reverseString(str);
+    return str === reverse;
 }
 
 
@@ -45,10 +42,11 @@ function getAllDateFormats(date){
     var ddmmyyy = dateStr.day + dateStr.month + dateStr.year;
     var mmddyyy = dateStr.month + dateStr.day + dateStr.year;
     var yyyymmdd = dateStr.year + dateStr.month + dateStr.day;
+    var ddmmyy = dateStr.day + dateStr.month + dateStr.year.slice(-2);
     var mmddyy = dateStr.month + dateStr.day + dateStr.year.slice(-2);
     var yymmdd = dateStr.year.slice(-2) + dateStr.month + dateStr.day;
 
-    return [ddmmyyy, mmddyyy, yyyymmdd, mmddyy, yymmdd]
+    return [ddmmyyy, mmddyyy, yyyymmdd, ddmmyy,  mmddyy, yymmdd]
 }
 
 function isPalindromeForAllFormats(date){
@@ -67,16 +65,20 @@ function isPalindromeForAllFormats(date){
 
 // helper leapyear function
 function isLeapYear(year){
-    if (year % 400 === 0)
-    return true;
+    if (year % 400 === 0){
+        return true;
+    }
+    
 
-  if (year % 100 === 0)
+  if (year % 100 === 0){
     return false;
+  }
+    
 
-  if (year % 4 === 0)
+  if (year % 4 === 0){
     return true;
-
-  return false;
+  }
+ return false;
 }
 
 //function to increment date 
@@ -85,11 +87,11 @@ function getNextDate(date){
     var month = date.month;
     var year = date.year;
 
-    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 30, 31, 30, 31, 30]
+    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-    if(month === 2){
+    if(month === 2){  
         if (isLeapYear(year)){
-            if(day>29){
+            if(day > 29){
                 day=1;
                 month++;
             }
@@ -121,10 +123,22 @@ function getNextDate(date){
 
 
 
-var date ={
-    day: 28,
-    month: 2,
-    year: 2020
+
+
+function nextPalindromeDate(date){
+    var nextDate = getNextDate(date);
+    ctr = 0;
+
+    //creating an infinite loop
+    while(1){
+        ctr++;
+        var isPalindrome = isPalindromeForAllFormats(nextDate);
+        if(isPalindrome){
+            break;
+        }
+        nextDate = getNextDate(nextDate);
+    }
+    return [ctr, nextDate]
 }
 
-console.log(getNextDate(date))
+
